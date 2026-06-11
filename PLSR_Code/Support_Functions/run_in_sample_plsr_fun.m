@@ -49,10 +49,11 @@ if cfg.fwe_flag == 1
 else
     disp(['FWE flag set to 0: running boostrapped models to obtain ' num2str((1-cfg.alpha_thresh).*100) '% uncorrected confidence intervals']); 
 end
+ci_type = cfg.ci_type;
 rng_seed = rng; % rng seed
 boot_plsr_fun = @(IV,DV,k) run_boot_plsr(IV,DV,k); % returns R^2, AIC, and betas as a vector
 options = statset('UseParallel', 'always'); % parallel processing
-[ci] = bootci(cfg.n_boot, {boot_plsr_fun, X_trim, Y, opt_k}, 'alpha', alpha_thresh, 'Options', options); % run bootstrapped PLSRs to get R^2, AIC, and betas
+[ci] = bootci(cfg.n_boot, {boot_plsr_fun, X_trim, Y, opt_k}, 'alpha', alpha_thresh, 'Options', options, 'type', ci_type); % run bootstrapped PLSRs to get R^2, AIC, and betas
 
 % threshold betas to retain non-zero crossing CIs
 disp(['Thresholding betas based on CI widths.']);
