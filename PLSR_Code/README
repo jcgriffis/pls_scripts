@@ -1,0 +1,21 @@
+%% README
+
+The script plsr_script_fe.m performs explanatory (i.e. in-sample) PLS regression analyses.
+It uses leave-one-out cross validation to estimate the optimal number of model components.
+Once an optimal component number is identified, the plsr model is fit to the full dataset, and 
+confidence intervals are estimated for the model fit and beta weights using bootstrap
+resampling. Methods are described in detail in Griffis et al., (2019 -- Cell Reports).
+
+The script plsr_script_oos.m performs predictive (i.e. out-of-sample) PLS regression analyses.
+It uses nested cross-validation to select the optimal number of model components for each test case.
+It only outputs model fit statistics,and does not perform signficance tests.
+
+The Support_Functions folder and subfolders contain necessary functions,
+and must be in your MATLAB path to run the script.
+
+All code is written by me with the exception of the functions in the matlab_nifti folder,
+which was obtained from the MATLAB file exchange.
+
+The script can be run as is to get an example weight map.
+
+Joseph Griffis, 2019, Washington University in St Louis
