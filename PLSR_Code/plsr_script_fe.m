@@ -36,6 +36,7 @@ cfg.out_dir = plsr_dir;
 
 % PLSR settings
 cfg.n_boot = 1000; % number of bootstraps
+cfg.ci_type = 'normal'; % type of CI (see MATLAB bootci documentation)
 cfg.alpha_thresh = .05; % alpha threshold
 cfg.fwe_flag = 1; % apply family-wise error correction
 cfg.trim_flag = 1; % trim flag = 1 will remove all columns from the predictor matrix with less than freq_thresh non-zero observations
